@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { userDataFetch } from '../feature/UserSlice';
+import Navbar from './Navbar';
 
 
 const Form = () => {
@@ -18,6 +19,7 @@ const Form = () => {
     }
   return (
     <>
+    <Navbar/>
     <h1 className='text-center'>Fill The Form</h1>
     <form className='container my-4' onSubmit={formSubmited}>
   <div className="mb-3">

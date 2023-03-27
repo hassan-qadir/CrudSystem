@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 const Navbar = () => {
   return (
     <>
@@ -16,7 +17,7 @@ const Navbar = () => {
           <Link className="nav-link active" aria-current="page" to='/Form' >Creat Post</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to='/' >All Post</Link>
+          <Link className="nav-link active" aria-current="page" to='/Alldata'>All Post</Link>
         </li>
       </ul>
       <form className="d-flex w-50">
