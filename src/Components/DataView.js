@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const DataView = () => {
     const {user} = useSelector((state) => state.read);
-
+  const nevigate = useNavigate();
   return (
  <>
  <Navbar/>
@@ -20,10 +21,11 @@ const DataView = () => {
     <h6 className="card-text">{`Age : ${element.age}`}</h6>
   </div>
 </div>
-</div>   
+</div> 
         </>
     )
- })}
+  })}
+  <button className='btn btn-info' onClick={() =>nevigate('/AllData')}>Go Back</button>  
  </>
   )
 }

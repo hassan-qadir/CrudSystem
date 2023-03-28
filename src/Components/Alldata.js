@@ -17,8 +17,10 @@ useEffect(()=>{
     <>
     <Navbar/>
      <h1 className='text-center'>All Posts</h1>
-     {loading ? (<div className="spinner-border text-center" role="status">
-  <span className="visually-hidden">Loading...</span>
+     {loading ? (<div className="d-flex justify-content-center">
+  <div className="spinner-border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
 </div>) : (users.map((item)=>{
     return(
         <>
