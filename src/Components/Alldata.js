@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Navbar from './Navbar'
-import { userRead } from '../feature/ReadSlice'
-import { ViewData } from '../feature/ReadSlice'
+import { userRead, ViewData, DeleteUser } from '../feature/ReadSlice'
 import { Link } from 'react-router-dom'
 
 
@@ -18,7 +17,9 @@ useEffect(()=>{
     <>
     <Navbar/>
      <h1 className='text-center'>All Posts</h1>
-     {loading ? (<h1>Loading</h1>) : (users.map((item)=>{
+     {loading ? (<div className="spinner-border text-center" role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>) : (users.map((item)=>{
     return(
         <>
          <div className='container'>
@@ -30,7 +31,7 @@ useEffect(()=>{
     <div className='d-fex my-3'>
     <Link to='/DataView'><button className='btn btn-success' onClick={() => dispatch(ViewData(item))} >View</button></Link>
     <button className='btn btn-info mx-2'>Edit</button> 
-    <button className='btn btn-danger'>Delete</button> 
+    <Link ><button className='btn btn-danger' onClick={()=> dispatch(DeleteUser(item.id))}>Delete</button></Link>
     </div>
   </div>
 </div>
