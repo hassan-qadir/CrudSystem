@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Form from './Components/Form';
 import Alldata from './Components/Alldata';
 import DataView from './Components/DataView';
+import EditForm from './Components/EditForm';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
     <Route path='/Form' element={<Form/>}/>
     <Route path='/Alldata' element={<Alldata/>}/>
     <Route path='/DataView' element={<DataView/>}/>
+    <Route path='/Edit/:id' element={<EditForm/>}/>
     </Routes>
    </Router>
    </>

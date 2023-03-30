@@ -29,12 +29,17 @@ name: 'ReadSlice',
 initialState: {
     users: [],
     user: [],
+    editUser: [],
     loading: false,
     error:null,
 },
 reducers: {
    ViewData: (state, action) =>{
     state.user.push(action.payload);
+   },
+   EditFind: (state, action) =>{
+      console.log(action.payload);
+     state.editUser = state.users.filter((item) => item.id === action.payload);
    }
 },
 extraReducers : {
@@ -65,5 +70,5 @@ extraReducers : {
 }
 })
 
-export const {ViewData, DeleteData} = ReadSlice.actions;
+export const {ViewData, DeleteData, EditFind} = ReadSlice.actions;
 export default ReadSlice.reducer;
