@@ -13,7 +13,7 @@ const Form = () => {
     console.log(users);
     dispatch(userDataFetch(users))
    }
-
+  
     const getUserData = (e)=>{
         setUsers({...users, [e.target.name]: e.target.value})
     }
@@ -21,7 +21,7 @@ const Form = () => {
     <>
     <Navbar/>
     <h1 className='text-center'>Fill The Form</h1>
-    <form className='container my-4' onSubmit={formSubmited}>
+    <form className='container my-4 bg-light p-3' onSubmit={formSubmited}>
   <div className="mb-3">
     <label  className="form-label">Name</label>
     <input type="text" name="name"  className="form-control" onChange={getUserData}/>

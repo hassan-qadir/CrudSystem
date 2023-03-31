@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { EditDataSend } from '../feature/ReadSlice';
-
 import Navbar from './Navbar';
 
 const EditForm = () => {
   const {id} = useParams();
   const [updateData, setUpdateData] = useState();
   const dispatch = useDispatch();
-
- const {users} = useSelector((state) => state.read);
-
+  const navigate = useNavigate()
+  const {users} = useSelector((state) => state.read);
 
  useEffect(() =>{
  if(id){
@@ -26,14 +24,15 @@ const EditForm = () => {
 
  const handleSubmit =(e)=>{
  e.preventDefault();
- dispatch(EditDataSend(updateData))
+ dispatch(EditDataSend(updateData));
+ navigate('/AllData');
  }
 
 return (
   <>
   <Navbar/>
   <h1 className='text-center'>Edit The Form</h1>
-  <form className='container my-4' onSubmit={handleSubmit}>
+  <form className='container my-4 bg-info p-3' onSubmit={handleSubmit}>
 <div className="mb-3">
   <label  className="form-label">Name</label>
   <input type="text" name="name" value={updateData && updateData.name} className="form-control" onChange={newData}/>
