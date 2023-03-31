@@ -9,6 +9,7 @@ const DataView = () => {
   return (
  <>
  <Navbar/>
+ <div className='contanier text-center'>
  <h1>User Data</h1>
  {user.map((element)=>{
     return (
@@ -25,7 +26,8 @@ const DataView = () => {
         </>
     )
   })}
-  <button className='btn btn-info' onClick={() =>nevigate('/AllData')}>Go Back</button>  
+  <button className='btn btn-info text-center' onClick={() =>nevigate('/AllData')}>Go Back</button>  
+ </div>
  </>
   )
 }

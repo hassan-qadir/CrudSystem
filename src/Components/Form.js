@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { userDataFetch } from '../feature/UserSlice';
 import Navbar from './Navbar';
 
@@ -7,11 +8,12 @@ import Navbar from './Navbar';
 const Form = () => {
     const [users, setUsers] = useState({});
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
    const formSubmited = (e) =>{
     e.preventDefault();
-    console.log(users);
     dispatch(userDataFetch(users))
+    navigate('/AllData');
    }
   
     const getUserData = (e)=>{
