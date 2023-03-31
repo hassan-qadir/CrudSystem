@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Navbar from './Navbar'
-import { userRead, ViewData, DeleteUser } from '../feature/ReadSlice'
+import { userRead, ViewData, DeleteUser, EditFind } from '../feature/ReadSlice'
 import { Link } from 'react-router-dom'
 
 

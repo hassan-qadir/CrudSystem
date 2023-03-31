@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+//view Data----
 
  export const userRead = createAsyncThunk('userRead', async(arg, {rejectWithValue})=>{
      const response = await fetch('https://6421818034d6cd4ebd74e516.mockapi.io/crud')
@@ -11,6 +12,29 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
      }
     }
 );
+
+//Edit Data--------
+
+export const EditDataSend = createAsyncThunk('EditDataSend', async(data, {rejectWithValue})=>{
+   console.log(data);
+   const response = await fetch(`https://6421818034d6cd4ebd74e516.mockapi.io/crud/${data.id}`,{
+      method : 'PUT',
+      headers : {
+          'Content-Type': 'application/json',
+      },
+      body : JSON.stringify(data)   
+  })
+   try {
+      const result = await response.json();
+      return result;
+   } catch (error) {
+      return rejectWithValue(error.response);
+   }
+  }
+);
+
+
+//Delete Data------
 
 export const DeleteUser = createAsyncThunk('DeleteUser', async(id, {rejectWithValue})=>{
    const response = await fetch(`https://6421818034d6cd4ebd74e516.mockapi.io/crud/${id}`,{method : 'DELETE'});
@@ -35,10 +59,10 @@ initialState: {
 },
 reducers: {
    ViewData: (state, action) =>{
-    state.user.push(action.payload);
+    state.user = state.users.filter(item => item.id === action.payload.id)
    },
    EditFind: (state, action) =>{
-      console.log(action.payload);
+      // console.log(action.payload);
      state.editUser = state.users.filter((item) => item.id === action.payload);
    }
 },
@@ -54,7 +78,22 @@ extraReducers : {
     state.loading = false;
     state.error = action.payload;
  },
+ //---------
 
+ [EditDataSend.pending] : (state) => {
+   state.loading = true;
+},
+[EditDataSend.fulfilled] : (state,action) =>{
+   state.loading = false;
+   state.users = state.users.map((element) => element.id === action.payload.id ? action.payload : element)
+}, 
+[EditDataSend.rejected] : (state, action) =>{
+   state.loading = false;
+   state.error = action.payload;
+},
+
+
+//---------
  [DeleteUser.pending] : (state) => {
    state.loading = true;
 },

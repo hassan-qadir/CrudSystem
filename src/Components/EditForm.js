@@ -1,43 +1,55 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { EditFind } from '../feature/ReadSlice';
+import { EditDataSend } from '../feature/ReadSlice';
+
 import Navbar from './Navbar';
 
-
-
 const EditForm = () => {
+  const {id} = useParams();
+  const [updateData, setUpdateData] = useState();
+  const dispatch = useDispatch();
 
-    const {name,email,age} = useSelector((state)=> state.read.editUser[0]);
-     const {id} = useParams();
-    const dispatch = useDispatch();
+ const {users} = useSelector((state) => state.read);
 
-    useEffect(()=>{
-     dispatch(EditFind(id));
-    }, [])
 
-  return (
- <>
-     <Navbar/>
-     
-    <h1 className='text-center'>Edit The Form</h1>
-    <form className='container my-4'>
-  <div className="mb-3">
-    <label  className="form-label">Name</label>
-    <input type="text" name="name"  className="form-control" value={name}/>
-  </div>
-  <div className="mb-3">
-    <label className="form-label">Email address</label>
-    <input type="email" name="email"  className="form-control" value={email} />
-  </div>
-  <div className="mb-3">
-    <label className="form-label">Age</label>
-    <input type="text" name="age" className="form-control" value={age}/>
-  </div>
-  <button type="submit" className="btn btn-primary ">Submit</button>
+ useEffect(() =>{
+ if(id){
+  const single = users.filter((ele) => ele.id === id);
+  setUpdateData(single[0]);
+ }
+ },[])
+
+ const newData = (e) =>{
+  setUpdateData({...updateData, [e.target.name]: e.target.value});
+ }
+
+ const handleSubmit =(e)=>{
+ e.preventDefault();
+ dispatch(EditDataSend(updateData))
+ }
+
+return (
+  <>
+  <Navbar/>
+  <h1 className='text-center'>Edit The Form</h1>
+  <form className='container my-4' onSubmit={handleSubmit}>
+<div className="mb-3">
+  <label  className="form-label">Name</label>
+  <input type="text" name="name" value={updateData && updateData.name} className="form-control" onChange={newData}/>
+</div>
+<div className="mb-3">
+  <label className="form-label">Email address</label>
+  <input type="email" name="email" value={updateData && updateData.email}  className="form-control" onChange={newData}/>
+</div>
+<div className="mb-3">
+  <label className="form-label">Age</label>
+  <input type="text" name="age" value={updateData && updateData.age} className="form-control" onChange={newData}/>
+</div>
+<button type="submit" className="btn btn-primary ">Submit</button>
 </form>
-    </>
-  )
+  </>
+)
 }
 
 export default EditForm

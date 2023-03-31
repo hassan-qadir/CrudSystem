@@ -10,7 +10,7 @@ const DataView = () => {
  <>
  <Navbar/>
  <h1>User Data</h1>
- {user && user.map((element)=>{
+ {user.map((element)=>{
     return (
         <>
             <div className='container'>
