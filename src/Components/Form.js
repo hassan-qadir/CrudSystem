@@ -36,7 +36,7 @@ const Form = () => {
     <label className="form-label">Age</label>
     <input type="text" name="age" className="form-control" onChange={getUserData}/>
   </div>
-  <button type="submit" className="btn btn-primary ">Submit</button>
+  <button type="submit" className="btn btn-primary p-2 ">Submit</button>
 </form>
     </>
   )
