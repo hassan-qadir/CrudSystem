@@ -14,7 +14,7 @@ const DataView = () => {
  {user.map((element)=>{
     return (
         <>
-            <div className='container'>
+            <div className='container bg-light'>
         <div className="card w-100 my-3">
         <div className="card-body">
     <h5 className="card-title">{`Name : ${element.name}`}</h5>
