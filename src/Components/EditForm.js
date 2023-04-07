@@ -32,7 +32,7 @@ return (
   <>
   <Navbar/>
   <h1 className='text-center'>Edit The Form</h1>
-  <form className='container my-4 bg-info p-3 bg-light' onSubmit={handleSubmit}>
+  <form className='container my-4 bg-info p-3' onSubmit={handleSubmit}>
 <div className="mb-3">
   <label  className="form-label">Name</label>
   <input type="text" name="name" value={updateData && updateData.name} className="form-control" onChange={newData}/>
