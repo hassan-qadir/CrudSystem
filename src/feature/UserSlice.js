@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
  export const userDataFetch = createAsyncThunk('user', async(data, {rejectWithValue})=>{
-     const response = await fetch('https://6421818034d6cd4ebd74e516.mockapi.io/crud',{
+     const response = await fetch('Your Api here',{
         method : 'POST',
         headers : {
             'Content-Type': 'application/json',
