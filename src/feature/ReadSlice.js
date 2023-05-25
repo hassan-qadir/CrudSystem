@@ -17,7 +17,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const EditDataSend = createAsyncThunk('EditDataSend', async(data, {rejectWithValue})=>{
    console.log(data);
-   const response = await fetch(`https://6421818034d6cd4ebd74e516.mockapi.io/crud/${data.id}`,{
+   const response = await fetch(`your api here where you edit data/${data.id}`,{
       method : 'PUT',
       headers : {
           'Content-Type': 'application/json',
