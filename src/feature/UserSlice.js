@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
  export const userDataFetch = createAsyncThunk('user', async(data, {rejectWithValue})=>{
-     const response = await fetch('Your Api here',{
+     const response = await fetch('Your Api here where you post data',{
         method : 'POST',
         headers : {
             'Content-Type': 'application/json',
