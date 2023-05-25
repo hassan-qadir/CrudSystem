@@ -25,7 +25,7 @@ useEffect(()=>{
     return(
         <>
          <div className='container'>
-        <div className="card w-100 my-3">
+        <div className="card w-100 my-4">
         <div className="card-body">
     <h5 className="card-title">{`Name : ${item.name}`}</h5>
     <h5 className="card-text">{`Email : ${item.email}`}</h5>
