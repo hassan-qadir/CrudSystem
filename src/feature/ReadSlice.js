@@ -37,7 +37,7 @@ export const EditDataSend = createAsyncThunk('EditDataSend', async(data, {reject
 //Delete Data------
 
 export const DeleteUser = createAsyncThunk('DeleteUser', async(id, {rejectWithValue})=>{
-   const response = await fetch(`https://6421818034d6cd4ebd74e516.mockapi.io/crud/${id}`,{method : 'DELETE'});
+   const response = await fetch(`Your api here where you data delete/${id}`,{method : 'DELETE'});
    try {
       const result = await response.json();
       return result;
