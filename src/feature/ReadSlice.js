@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //view Data----
 
  export const userRead = createAsyncThunk('userRead', async(arg, {rejectWithValue})=>{
-     const response = await fetch('Your Api here')
+     const response = await fetch('Your Api here where you get data')
      try {
         const result = await response.json();
         return result;
